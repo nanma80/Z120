@@ -28,6 +28,9 @@ original_move = Move([random.randint(0, 1) for b in range(120)])
 
 # # test is all zero: if edge parities are solved, then face parities are automatically solved
 
-scrambled_state = EdgeState([random.randint(0, 1) for b in range(60)])
+state_builder = [0] * 60
+state_builder[0] = 1
+state_builder[1] = 1
+scrambled_state = EdgeState(state_builder)
 solution = Edges.solve_right(scrambled_state)
 solution
