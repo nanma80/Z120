@@ -1,7 +1,32 @@
 from cell120 import *
 
-c = Cell120()
+cell120 = Cell120()
 
+# face_matrix = []
+
+# for orbit in cell120.face_orbits:
+#   row = []
+#   for i in range(120):
+#     if i in orbit.moves:
+#       row.append(1)
+#     else:
+#       row.append(0)
+#   face_matrix.append(row)
+
+# print face_matrix
+
+edge_matrix = []
+
+for orbit in cell120.edge_orbits:
+  row = []
+  for i in range(120):
+    if i in orbit.moves:
+      row.append(1)
+    else:
+      row.append(0)
+  edge_matrix.append(row)
+
+print edge_matrix
 
 
 # orbits
