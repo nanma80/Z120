@@ -73,6 +73,14 @@ class Vector:
   def distance_to(self, vector):
     return sum((a - b) * (a - b) for a, b in zip(self.value, vector.value))
 
+  def mirror_around(self, vector):
+    xy = sum(1.0 * a * b for a, b in zip(self.value, vector.value))
+    yy = sum(a * a for a in vector.value)
+    projection = [a * xy / yy for a in vector.value]
+    perpend = [a - b for a, b in zip(self.value, projection)]
+    mirror = [a - b for a, b in zip(projection, perpend)]
+    return Vector(tuple(mirror))
+
 class VectorTests(unittest.TestCase):
   def test_eq(self):
     p = Vector((1, 2, 0, 0))
@@ -136,6 +144,10 @@ class VectorTests(unittest.TestCase):
     p = Vector((1, 2))
     q = Vector((1, 2 + 1e-11))
     assert len(set([p, q])) == 1
+
+  def test_mirror_around(self):
+    assert Vector((2, 2)).mirror_around(Vector((3, 0))) == Vector((2, -2))
+    assert Vector((2, 0)).mirror_around(Vector((3, 3))) == Vector((0, 2))
 
 if __name__ == "__main__":
   unittest.main()

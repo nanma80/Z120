@@ -75,43 +75,64 @@ class Cell120:
     return orbits.values()
 
   def populate_face_orbits(self):
-    orbits = {}
-    return orbits.values()
+    orbits = []
+    faces = self.faces[:]
+
+    for i in range(72):
+      orbit = Orbit()
+      face = faces[0]
+      seed = faces.pop()
+      orbit.add_line(seed)
+      moves = list(seed.moves)
+      axis = moves[0]
+      for j in range(9):
+        face_centers = [face.center() for face in faces]
+        mirror_index = face_centers.index(seed.center().mirror_around(self.cells[axis]))
+        seed = faces.pop(mirror_index)
+        orbit.add_line(seed)
+        moves = list(seed.moves)
+        moves.remove(axis)
+        axis = moves[0]
+
+      orbits.append(orbit)
+
+    return orbits
 
 class Cell120Tests(unittest.TestCase):
-  # def test_basic_counts(self):
-  #   c = Cell120()
-  #   assert len(c.vertices) == 600
-  #   assert len(c.cells) == 120
-  #   assert len(c.edges) == 1200
-  #   assert len(c.faces) == 720
+  def test_basic_counts(self):
+    c = Cell120()
+    assert len(c.vertices) == 600
+    assert len(c.cells) == 120
+    assert len(c.edges) == 1200
+    assert len(c.faces) == 720
 
-  # def test_edge_moves(self):
-  #   c = Cell120()
-  #   for edge in c.edges:
-  #     assert len(edge.moves) == 3
+  def test_edge_moves(self):
+    c = Cell120()
+    for edge in c.edges:
+      assert len(edge.moves) == 3
 
-  # def test_face_moves(self):
-  #   c = Cell120()
-  #   for face in c.faces:
-  #     assert len(face.moves) == 2
+  def test_face_moves(self):
+    c = Cell120()
+    for face in c.faces:
+      assert len(face.moves) == 2
 
-  # def test_edge_orbits(self):
-  #   c = Cell120()
-  #   assert isinstance(c.edge_orbits, list)
-  #   assert len(c.edge_orbits) == 60
-  #   for orbit in c.edge_orbits:
-  #     assert orbit.move_count() == 30
-  #     assert orbit.line_count() == 20
+  def test_edge_orbits(self):
+    c = Cell120()
+    assert isinstance(c.edge_orbits, list)
+    assert len(c.edge_orbits) == 60
+    for orbit in c.edge_orbits:
+      assert orbit.move_count() == 30
+      assert orbit.line_count() == 20
+    assert len(reduce(lambda x, y: x.union(y), [orbit.lines for orbit in c.edge_orbits])) == 1200
 
   def test_face_orbits(self):
     c = Cell120()
     assert isinstance(c.face_orbits, list)
-    print len(c.face_orbits)
     assert len(c.face_orbits) == 72
-    for orbit in c.edge_orbits:
+    for orbit in c.face_orbits:
       assert orbit.move_count() == 10
       assert orbit.line_count() == 10
+    assert len(reduce(lambda x, y: x.union(y), [orbit.lines for orbit in c.face_orbits])) == 720
 
 if __name__ == "__main__":
   unittest.main()

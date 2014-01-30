@@ -2,6 +2,50 @@ from cell120 import *
 
 c = Cell120()
 
+
+
+# orbits
+
+# f0 = c.faces[0]
+# print f0.moves
+# c0 = c.cells[0]
+
+# face_centers = [face.center() for face in c.faces]
+
+# mirrorf0 = f0.center().mirror_around(c0)
+# print face_centers.index(mirrorf0)
+
+# minimum = 100
+
+# for cell in c.cells:
+#   distance = mirrorc28.distance_to(cell)
+#   # print distance
+#   if distance > 0 and distance < minimum:
+#     minimum = distance
+#     if distance < 0.1488:
+#       print cell.value
+
+# print minimum
+
+
+# print f0.center().value
+# print mirrorf0.value
+# print c0.value
+
+# minimum = 100
+
+# for f in c.faces:
+#   distance = mirrorf0.distance_to(f.center())
+#   # print distance
+#   if distance > 0 and distance < minimum:
+#     minimum = distance
+#     if distance < 0.0183:
+#       print f.center().value
+
+# print minimum
+
+# print (f0.center().mirror_around(c0) in c.faces)
+
 # for c0 in c.cells:
 
 #   count = 0
