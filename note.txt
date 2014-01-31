@@ -2,17 +2,26 @@ An orbit is solved if the permutation of the pieces in the orbit is even. It's c
 
 When all 3C orbits are solved, all 2C orbits are automatically solved. Therefore the focus is on 3C orbits.
 30 cells move any particular orbit.
-Intersection between two orbits: 
-4: 15, 
-6: 20, 
-10: 24, 
+
+There are 60 orbits for 3C. Each orbit has 20 3C pieces.
+
+In an cell centric view, Zome model 
+15 orbits pass the core: blue struts
+20 orbits pass the extension of vertices from core, between the second layer cells: yellow struts
+12 orbits pass the edges between second layer and third layer cells: long red struts
+12 orbits pass the edges between third layer and fourth layer cells: short red struts
+1 orbit orthogonal to the view. No strut
+
+Intersection between two orbits: (with respect to the orthogonal edges; no strut)
+4: 15, blue struts
+6: 20, yellow struts
+10: 24, long red struts and short red struts
 30: 1, the orbit itself
 
-
 Each cell flip changes the parity of 15 orbits. 
-Intersection between two cells: 
-2: 30, 
-3: 40, 
-5: 48, 
+Intersection between two cells: with respect to the core
+2: 30, flat cells on the equators
+3: 40, third layer cells in the directions of vertices of core
+5: 48, second layer and fourth layer cells
 15: 2, the cell itself and the antipodal cell
 
