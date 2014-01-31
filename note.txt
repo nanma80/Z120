@@ -25,3 +25,6 @@ Intersection between two cells: with respect to the core
 5: 48, second layer and fourth layer cells
 15: 2, the cell itself and the antipodal cell
 
+Steps to solve 3C:
+(1) Solve everything in the south hemisphere without worrying about parity. North sphere and equator are unsolved.
+(2) 

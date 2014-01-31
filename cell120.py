@@ -30,8 +30,8 @@ class Cell120:
 
   def populate_cells(self):
     cells = []
-    cells.extend(list(Vector((0.5, 0.5, 0.5, 0.5)).plus_minus()))
     cells.extend(list(Vector((0, 0, 0, 1)).plus_minus_all_perm()))
+    cells.extend(list(Vector((0.5, 0.5, 0.5, 0.5)).plus_minus()))
     cells.extend(list(Vector((PHI * 0.5, 0.5, 0, 0.5/PHI)).plus_minus_even_perm()))
     return cells
 
