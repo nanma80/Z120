@@ -19,7 +19,7 @@ class Line:
 
   def direction(self):
     l = [a - b + 0.0 for a, b in zip(self.v1.value, self.v2.value)]
-    if reduce(lambda x, y: 1.234 * x + y, l) < 0:
+    if reduce(lambda x, y: 1e-7 * x + y, l) < 0:
       l = [-c for c in l]
     return Vector(tuple(l))
 

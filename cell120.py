@@ -33,7 +33,9 @@ class Cell120:
     cells.extend(list(Vector((0, 0, 0, 1)).plus_minus_all_perm()))
     cells.extend(list(Vector((0.5, 0.5, 0.5, 0.5)).plus_minus()))
     cells.extend(list(Vector((PHI * 0.5, 0.5, 0, 0.5/PHI)).plus_minus_even_perm()))
-    return cells
+
+    return sorted(cells, key = lambda cell: - cell.value[3])
+    # return cells
 
   def populate_edges(self):
     edges = []
@@ -72,7 +74,9 @@ class Cell120:
       if direction not in orbits:
         orbits[direction] = Orbit()
       orbits[direction].add_line(edge)
-    return orbits.values()
+
+    sorted_keys = sorted(orbits.keys(), key = lambda direction: direction.value[3])
+    return [orbits[i] for i in sorted_keys]
 
   def populate_face_orbits(self):
     orbits = []
