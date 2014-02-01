@@ -7,6 +7,10 @@ def matrix_gf2_rank(matrix):
   matrix_gf2 = MS(matrix)
   return matrix_gf2.rank()
 
+# skipping = 43
+# matrix_3c_skipped = matrix_3c[:skipping] + matrix_3c[(skipping + 1):]
+# matrix = zip(*matrix_3c_skipped)
+
 matrix = zip(*matrix_3c)
 full_rank = matrix_gf2_rank(matrix)
 print 'Rank of the full matrix: ' + repr(full_rank)

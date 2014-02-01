@@ -10,6 +10,10 @@ def matrix_gf2_rank(matrix):
   matrix_gf2 = MS(matrix)
   return matrix_gf2.rank()
 
+# skipping = 43
+# matrix_3c_skipped = matrix_3c[:skipping] + matrix_3c[(skipping + 1):]
+# matrix = zip(*matrix_3c_skipped)
+
 matrix = zip(*matrix_3c)
 full_rank = matrix_gf2_rank(matrix)
 print 'Rank of the full matrix: ' + repr(full_rank)
@@ -28,7 +32,7 @@ cells_to_move += [_sage_const_8 , _sage_const_9 , _sage_const_13 , _sage_const_1
 # third layer, 12 cells. Changes 32 orbits
 # cells_to_move += [27, 40, 49, 50, 54, 55, 80, 86, 89, 93, 104, 117]
 # subset of third layer
-cells_to_move += [_sage_const_27 , _sage_const_40 , _sage_const_49 , _sage_const_50 , _sage_const_54 ,]
+cells_to_move += [_sage_const_27 , _sage_const_40 , _sage_const_49 , _sage_const_50 , _sage_const_54 ]
 
 # fourth layer, equator, 30 cells. Changes 0 orbit
 # cells_to_move += [1, 3, 4, 5, 6, 7, 24, 26, 30, 31, 34, 36, 37, 38, 39, 41, 53, 61, 63, 65, 70, 73, 76, 77, 78, 83, 88, 101, 102, 111]
