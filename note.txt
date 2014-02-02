@@ -28,3 +28,10 @@ Intersection between two cells: with respect to the core
 Steps to solve 3C:
 (1) Solve everything in the south hemisphere without worrying about parity. North sphere and equator are unsolved.
 (2) 
+
+
+Available algorithms:
+
+3C 3-cycle, affecting 4C
+3C double rotation
+2C pure 3-cycle
