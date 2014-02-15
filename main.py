@@ -8,11 +8,13 @@ cell120 = Cell120()
 #   if orbit.moves == set([1, 3, 4, 5, 6, 7, 24, 26, 30, 31, 34, 36, 37, 38, 39, 41, 53, 61, 63, 65, 70, 73, 76, 77, 78, 83, 88, 101, 102, 111]):
 #     print i
 
-print sorted([(i, cell120.cells[i].value[3]) for i in range(120)], key=lambda x: x[1])
+# print sorted([(i, cell120.cells[i].value[3]) for i in range(120)], key=lambda x: x[1])
 
-print sorted([i for i in range(120)], key=lambda i: cell120.cells[i].value[3])
+# print sorted([i for i in range(120)], key=lambda i: cell120.cells[i].value[3])
 
-
+l = [(i, list(x.lines)[0].direction().value[3]) for i, x in enumerate(cell120.edge_orbits)]
+for i in l:
+  print i
 
 # from matrix_2c import *
 # from matrix_3c import *
