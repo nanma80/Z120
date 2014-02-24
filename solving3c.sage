@@ -1,5 +1,8 @@
 import random
 
+def index_all(enumerable, value):
+  return [i for i, x in enumerate(enumerable) if x == value]
+
 load matrix_2c.py
 load matrix_3c.py
 
@@ -20,22 +23,28 @@ initial_move = [0] * 120
 
 cells_to_move = []
 
+# adhoc subset
+# cells_to_move += [13, 18, 22, 24, 25]
+# cells_to_move += [7, 8, 12, 18, 19, 25, 26, 28, 31]
+# cells_to_move += [0, 1, 2, 8, 10, 11, 12, 13, 14, 18, 19, 21, 24, 25, 30, 31, 32, 34, 35]
+cells_to_move += [5, 9, 10, 12, 21, 23, 25, 27, 28, 29, 30, 32, 46, 47, 51, 53]
+
 # core, north pole
 # cells_to_move += [0]
 
 # first layer, 10 cells. Changes 32 orbits
-cells_to_move += [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+# cells_to_move += [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
 # second layer, 20 cells. Changes 24 orbits
-cells_to_move += [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32]
+# cells_to_move += [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32]
 
 # third layer, 12 cells. Changes 32 orbits
-cells_to_move += [33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44]
+# cells_to_move += [33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44]
 # subset of third layer
 
 
 # fourth layer, equator, 30 cells. Changes 0 orbit
-cells_to_move += [45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74]
+# cells_to_move += [45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74]
 # subset of equators
 
 
@@ -59,7 +68,10 @@ for cell_index in cells_to_move:
 gf2_moves = Move(initial_move)
 
 scrambled_state = State3C(Matrix3C * gf2_moves)
+cells_flipped = index_all(scrambled_state, 1)
+
 print repr(list(scrambled_state).count(1)) + ' orbits changed'
+print cells_flipped
 
 # for i in range(120):
 #   if i > 0:

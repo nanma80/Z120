@@ -13,7 +13,7 @@ def index_all(enumerable, value):
 load matrix_2c.py
 load matrix_3c.py
 
-starting_orbit = 26
+starting_orbit = 22
 sub_matrix_3c = matrix_3c[starting_orbit:60]
 num_orbits = len(sub_matrix_3c)
 sub_matrix = matrix_gf2(sub_matrix_3c)
@@ -55,15 +55,59 @@ for cell_index in range(1):
 # 1. Solve orbit 59. If odd parity, flip cell 45 or any cell from 45 ~ 74
 # 2. Solve orbits 47 ~ 58. If any has odd parity, flip 5 cells to fix parity.
 #    For orbit 50, flipping cells [13, 15, 17, 23, 24]. One only needs to move second layer cells
+#    For orbit 55, flipping cells [13, 18, 22, 24, 25], a circle of second layer cells. 
+#      The circle of cells flip 23 orbits:
+#      [0, 2, 4, 5, 8, 10, 11, 12, 13, 17, 19, 20, 23, 25, 30, 31, 32, 36, 37, 42, 43, 44, 55]
 # 3. Solve orbits 27 ~ 46. If any has odd parity, flip 9 cells to fix parity.
 #    For orbit 27, flipping cells [7, 8, 12, 18, 19, 25, 26, 28, 31]. One only needs to move first and second layer cells.
+#      A cluster of three first layer cells, around one dodecahedral vertex, and six second layer cells from six vertices on the three pentagons but not adjacent to the central vertex
+#      7 orbits changed: [5, 6, 9, 20, 22, 25, 27]. One yellow strut, three long red struts, three blue struts
 # 4. Solve orbits 15 ~ 26. Although 12 orbits need to be solved, the additional rank is only 5
 #    Orbits 22 ~ 26 can be solved one by one, in descending order. After that, orbits 15 ~ 21 will be solved automatically
 #    One needs to move the first four layers (including equator)
+#    Orbit 22: [5, 9, 10, 12, 21, 23, 25, 27, 28, 29, 30, 32, 46, 47, 51, 53]
+# 5 (0.5, -0.3090169943749474, 0, 0.8090169943749475)
+# 9 (-0.5, 0.3090169943749474, 0, 0.8090169943749475)
+# 10 (-0.3090169943749474, 0, 0.5, 0.8090169943749475)
+# 12 (0.3090169943749474, 0, -0.5, 0.8090169943749475)
+# 21 (-0.8090169943749475, 0, 0.3090169943749474, 0.5)
+# 23 (0, 0.3090169943749474, 0.8090169943749475, 0.5)
+# 25 (0.8090169943749475, 0, -0.3090169943749474, 0.5)
+# 27 (0, 0.3090169943749474, -0.8090169943749475, 0.5)
+# 28 (-0.3090169943749474, -0.8090169943749475, 0, 0.5)
+# 29 (0.3090169943749474, 0.8090169943749475, 0, 0.5)
+# 30 (0, -0.3090169943749474, 0.8090169943749475, 0.5)
+# 32 (0, -0.3090169943749474, -0.8090169943749475, 0.5)
+# 46 (0, -1, 0, 0)
+# 47 (1, 0, 0, 0)
+# 51 (-0.8090169943749475, 0.3090169943749474, 0.5, 0)
+# 53 (0.3090169943749474, 0.5, -0.8090169943749475, 0)
+#      10 orbits changed: [2, 3, 6, 7, 10, 13, 16, 17, 21, 22]
 # 5. Solve orbits 0 ~ 14. Although 15 orbits need to be solved, the additional rank is only 6
 #    Orbits 9 ~ 14 can be solved one by one, in descending order. After that, orbits 0 ~ 8 will be solved automatically
 #    One needs to move the first three layers
-
+#      Orbit 9: [0, 1, 2, 8, 10, 11, 12, 13, 14, 18, 19, 21, 24, 25, 30, 31, 32, 34, 35]
+# 0 (0, 0, 0, 1)
+# 1 (0.3090169943749474, 0, 0.5, 0.8090169943749475)
+# 2 (0, 0.5, 0.3090169943749474, 0.8090169943749475)
+# 8 (-0.3090169943749474, 0, -0.5, 0.8090169943749475)
+# 10 (-0.3090169943749474, 0, 0.5, 0.8090169943749475)
+# 11 (0, 0.5, -0.3090169943749474, 0.8090169943749475)
+# 12 (0.3090169943749474, 0, -0.5, 0.8090169943749475)
+# 13 (0.5, 0.5, 0.5, 0.5)
+# 14 (-0.5, 0.5, 0.5, 0.5)
+# 18 (0.5, 0.5, -0.5, 0.5)
+# 19 (-0.5, 0.5, -0.5, 0.5)
+# 21 (-0.8090169943749475, 0, 0.3090169943749474, 0.5)
+# 24 (0.8090169943749475, 0, 0.3090169943749474, 0.5)
+# 25 (0.8090169943749475, 0, -0.3090169943749474, 0.5)
+# 30 (0, -0.3090169943749474, 0.8090169943749475, 0.5)
+# 31 (-0.8090169943749475, 0, -0.3090169943749474, 0.5)
+# 32 (0, -0.3090169943749474, -0.8090169943749475, 0.5)
+# 34 (0, -0.8090169943749475, -0.5, 0.3090169943749474)
+# 35 (0, -0.8090169943749475, 0.5, 0.3090169943749474)
+#      1 center + 6 first layer + 10 second layer + 2 third layer
+#      7 orbits changed: [2, 3, 5, 6, 7, 8, 9], all blue struts
 
 
 # Structure of orbits
