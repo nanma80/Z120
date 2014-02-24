@@ -19,9 +19,13 @@ cell120 = Cell120()
 # l = [13, 18, 22, 24, 25] # A circle of second layer cells
 # l = [7, 8, 12, 18, 19, 25, 26, 28, 31] # A cluster of three first layer cells, around one dodecahedral vertex, and six second layer cells from six vertices on the three pentagons but not adjacent to the central vertex
 # l = [0, 1, 2, 8, 10, 11, 12, 13, 14, 18, 19, 21, 24, 25, 30, 31, 32, 34, 35]
-l = [5, 9, 10, 12, 21, 23, 25, 27, 28, 29, 30, 32, 46, 47, 51, 53]
+# l = [5, 9, 10, 12, 21, 23, 25, 27, 28, 29, 30, 32, 46, 47, 51, 53]
+# for i in l:
+#   print i, cell120.cells[i].value
+
+l = [2, 3, 5, 6, 7, 8, 9]
 for i in l:
-  print i, cell120.cells[i].value
+  print i, list(cell120.edge_orbits[i].lines)[0].direction().value
 
 
 # from matrix_2c import *
