@@ -29,6 +29,8 @@ Steps to solve 3C:
 (1) Solve everything in the south hemisphere without worrying about parity. North sphere and equator are unsolved.
 (2) 
 
+Yellow struts to flip:
+Upper equator, purple, pink, green
 
 Available algorithms:
 
