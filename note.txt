@@ -30,7 +30,9 @@ Steps to solve 3C:
 (2) 
 
 Yellow struts to flip:
+Top circle, purple, dark pink, light green
 Upper equator, purple, pink, green
+
 
 Available algorithms:
 
