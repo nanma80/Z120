@@ -2,9 +2,9 @@ import os
 import datetime
 
 filename_init = 'solved.log'
-# filename_current = 'trying.log'
+filename_current = 'trying.log'
 # filename_current = 'Par19Trying.log'
-filename_current = 'solving.log'
+# filename_current = 'solving.log'
 
 n_stickers_per_cell = 1 + 12 + 30 + 20 # 63
 n_cells = 120
