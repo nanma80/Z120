@@ -1,4 +1,5 @@
 load matrix_3c.py
+load matrix_2c.py
 
 def matrix_gf2_rank(matrix):
   n_rows = len(matrix)
@@ -14,7 +15,10 @@ matrix = zip(*matrix_3c_skipped)
 
 # matrix = zip(*matrix_3c)
 full_rank = matrix_gf2_rank(matrix)
-print 'Rank of the full matrix: ' + repr(full_rank)
+print 'Rank of the full matrix 3C: ' + repr(full_rank)
+
+full_rank_2c = matrix_gf2_rank(matrix_2c)
+print 'Rank of the full matrix 2C: ' + repr(full_rank_2c)
 
 cells_to_move = []
 
