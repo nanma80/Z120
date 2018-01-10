@@ -1,4 +1,5 @@
 *.py[cod]
+*.sage.py
 
 # C extensions
 *.so
